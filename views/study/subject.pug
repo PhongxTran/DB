@@ -1,0 +1,43 @@
+extends ../layout 
+
+block content 
+	section.content-header
+		.container-fluid
+			.row.mb-2
+				.col-sm-6
+					h1 #{title}
+	section.content
+		.container-fluid
+			.row
+				.col-12
+					.card
+						.card-body
+							table#tab-faculty.table.table-bordered.table-striped
+								thead
+									tr
+										th Mã môn học
+										th Tên Môn
+										th Số tín chỉ
+										th HS thi
+										th HS bài tập
+										th HS lab 
+										th Thao tác
+								tbody
+									each subject in subjectList 
+										tr 
+											td=subject.subjectID
+											td=subject.subjectName
+											td=subject.credit
+											td=subject.final_score_weight
+											td=subject.exercise_weight
+											td=subject.lab_score_weight
+											td.text-center
+												//- .btn.btn-primary.btn-xs
+												a(style="margin-right: 5px; ", href="/faculty/edit/" + subject.subjectID) 
+													i.fas.fa-edit
+												//.btn.btn-danger.btn-xs
+												a(href="/faculty/delete/" + subject.subjectID)
+													i(style ='color: red').fas.fa-trash 
+
+//- block script 
+//- 	script(src="/js/faculty/index.js") 

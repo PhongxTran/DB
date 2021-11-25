@@ -12,24 +12,4 @@ block content
 				.col-12
 					.card
 						.card-body
-							//- table#tab-faculty.table.table-bordered.table-striped
-								//- thead
-								//- 	tr
-								//- 		th Mã số Khoa
-								//- 		th Tên Khoa
-								//- 		th Năm thành lập
-								//- 		th Thao tác
-								//- tbody
-									each faculty in facultyList 
-										tr 
-											td=faculty.F_ID
-											td=faculty.F_NAME
-											td=faculty.F_EYEAR
-											td.text-center
-												a.btn.btn-primary.btn-xs(style="margin-right: 5px;", href="/faculty/edit/" + faculty.F_ID) 
-													i.fas.fa-edit
-												a.btn.btn-danger.btn-xs(href="/faculty/delete/" + faculty.F_ID)
-													i.fas.fa-trash 
-
-//- block script 
-//- 	script(src="/js/faculty/index.js") 
+							
