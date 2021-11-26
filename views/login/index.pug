@@ -1,0 +1,56 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		title AdminLTE 3 | Log in (v2)
+		// Google Font: Source Sans Pro
+		link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback')
+		// Font Awesome
+		link(rel='stylesheet' href='../../plugins/fontawesome-free/css/all.min.css')
+		// icheck bootstrap
+		link(rel='stylesheet' href='../../plugins/icheck-bootstrap/icheck-bootstrap.min.css')
+		// Theme style
+		link(rel='stylesheet' href='../../dist/css/adminlte.min.css')
+	body.hold-transition.login-page
+		.login-box
+			// /.login-logo
+			.card.card-outline.card-primary
+				.card-header.text-center
+					a.h1(href='../../index2.html')
+						| Xác thực tập trung
+				.card-body
+					p.login-box-msg Đăng nhập vào hệ thống
+					form(action='' method='post')
+						.input-group.mb-3
+							input.form-control(type='email' name ='email' placeholder='Email')
+							.input-group-append
+								.input-group-text
+									span.fas.fa-envelope
+						.input-group.mb-3
+							input.form-control(type='password' name = 'mssv' placeholder='Mật khẩu')
+							.input-group-append
+								.input-group-text
+									span.fas.fa-lock
+						.row
+							.col-6
+								.icheck-primary
+									input#remember(type='checkbox')
+									label(for='remember')
+										| Lưu mật khẩu
+							// /.col
+							.col-6
+								button.btn.btn-primary.btn-block.btn-md(type='submit') Đăng nhập
+					p.mb-1(style = 'margin-top: 2px')
+						a(href='forgot-password.html') Quên mật khẩu ?
+					p.mb-0
+						a.text-center(href='register.html') Chưa có tài khoản ?
+				// /.card-body
+			// /.card
+		// /.login-box
+		// jQuery
+		script(src='../../plugins/jquery/jquery.min.js')
+		// Bootstrap 4
+		script(src='../../plugins/bootstrap/js/bootstrap.bundle.min.js')
+		// AdminLTE App
+		script(src='../../dist/js/adminlte.min.js')

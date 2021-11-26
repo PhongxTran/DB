@@ -12,32 +12,30 @@ block content
 				.col-12
 					.card
 						.card-body
-							table#tab-subject.table.table-bordered.table-striped
+							table#tab-classroom.table.table-bordered.table-striped
 								thead
 									tr
-										th Mã môn học
-										th Tên Môn
-										th Số tín chỉ
-										th HS thi
-										th HS bài tập
-										th HS lab 
+										th STT
+										th Mã phòng học
+										th Kiểu phòng học
+										th Sức chứa tối đa
+										th Tình trạng
 										th Thao tác
 								tbody
-									each classroom in classroomList 
-										tr 
-											td=subject.subjectID
-											td=subject.subjectName
-											td=subject.credit
-											td=subject.final_score_weight
-											td=subject.exercise_weight
-											td=subject.lab_score_weight
-											td.text-center
-												//- .btn.btn-primary.btn-xs
-												a(style="margin-right: 5px; ", href="/faculty/edit/" + subject.subjectID) 
-													i.fas.fa-edit
-												//.btn.btn-danger.btn-xs
-												a(href="/faculty/delete/" + subject.subjectID)
-													i(style ='color: red').fas.fa-trash 
+									//- each classroom in classroomList 
+									//- 	tr 
+									//- 		td 1
+									//- 		td=classroom.roomID
+									//- 		td=classroom.roomType
+									//- 		td 100
+									//- 		td Đang bảo trì
+									//- 		td.text-center
+									//- 			//- .btn.btn-primary.btn-xs
+									//- 			a(style="margin-right: 5px; ", href="/faculty/edit/" + subject.subjectID) 
+									//- 				i.fas.fa-edit
+									//- 			//.btn.btn-danger.btn-xs
+									//- 			a(href="/faculty/delete/" + subject.subjectID)
+									//- 				i(style ='color: red').fas.fa-trash 
 
-block script 
-	script(src="/javascripts/study/subject.js") 
+//- block script 
+//- 	script(src="/javascripts/study/subject.js") 
