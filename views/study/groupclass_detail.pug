@@ -12,25 +12,25 @@ block content
 				.col-12
 					.card
 						.card-body
-							table#tab-subject.table.table-bordered.table-striped
+							table#tab-groupclass.table.table-bordered.table-striped
 								thead
 									tr
-										th Mã môn học
-										th Tên Môn
-										th Số tín chỉ
-										th HS thi
-										th HS bài tập
-										th HS lab 
+										th Tên tổ
+										th Tên Nhóm
+										th Tên môn
+										th Giờ bắt đầu
+										th Giờ kết thúc
+										th Giảng viên
 										th Thao tác
 								tbody
 									each subject in subjectList 
 										tr 
-											td=subject.subjectID
+											td=subject.classID
+											td=subject.groupID
 											td=subject.subjectName
-											td=subject.credit
-											td=subject.final_score_weight
-											td=subject.exercise_weight
-											td=subject.lab_score_weight
+											td=subject.startTime
+											td=subject.endTime
+											td=subject.MSGV
 											td.text-center
 												//- .btn.btn-primary.btn-xs
 												a(style="margin-right: 5px; ", href="/faculty/edit/" + subject.subjectID) 
