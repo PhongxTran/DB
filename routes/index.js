@@ -85,23 +85,23 @@ router.get('/score/:mssv', async function(req, res) {
             yearSemester.push(str);
         }
     })
-    studyScore.map(detail => {
-        if (detail.exercisescore == null) detail.exercisescore = __
-        if (detail.labscore == null) detail.labscore = __
-        if (detail.midscore == null) detail.finalscore = __
+    console.log(studyScore);
+    let studyRender = studyScore.map(detail => {
+        if (detail.exercisescore == null) detail.exercisescore = `__`
+        if (detail.labscore == null) detail.labscore = `__`
+            // if (detail.midscore == null) detail.finalscore = `__`
         return {
             ...detail,
-            score: `BTL : ` + detail.exercisescore + `TH : ` + detail.labscore,
+            score: `BTL : ` + detail.exercisescore + ` TH : ` + detail.labscore,
             groupClass: detail.classID + '-' + detail.groupID,
         }
     })
-    console.log(studyScore);
-    // res.render('score/index', {
-    //     mssv: mssv,
-    //     yearSemester: yearSemester,
-    //     title: 'Score',
-    //     studyScore: studyScore
-    // });
+    res.render('score/index', {
+        mssv: mssv,
+        yearSemester: yearSemester,
+        title: 'Score',
+        studyScore: studyRender
+    });
 })
 
 

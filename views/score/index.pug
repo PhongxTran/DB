@@ -21,9 +21,9 @@ block content
 											th Tên Môn
 											th Nhóm-Tổ
 											th Số TC
-											th Giờ học
-											th Phòng học
-											th Tuần học
+											th Điểm thành phần
+											th Điểm thi
+											th Điểm tổng kết
 									tbody
 										each study in studyScore
 											if study.year ==  yearsemester.year 
@@ -33,8 +33,8 @@ block content
 														td=study.subjectName
 														td=study.groupClass
 														td=study.credit
-														td=study.timing
-														td=study.roomID
-														td=study.week
+														td=study.score
+														td=study.finalscore
+														td=study.total_score
 block script
 	script(src="/javascripts/TKB.js") 
