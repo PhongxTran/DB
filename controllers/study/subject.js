@@ -29,5 +29,17 @@ class subjectController {
         })
 
     }
+
+    async editSubject(req, res) {
+        let subject = req.body;
+        await subjectModel.editsubject(subject);
+        res.redirect('/study/subject');
+    }
+
+    async deleteSubject(req, res) {
+        let subjectID = req.body;
+        await subjectModel.deletesubject(subjectID);
+        res.redirect('/study/subject');
+    }
 }
 module.exports = new subjectController();

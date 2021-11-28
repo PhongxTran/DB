@@ -1,4 +1,3 @@
-console.log('Hello');
 $("#tab-subject").DataTable({
     responsive: true,
     lengthChange: false,
@@ -6,15 +5,34 @@ $("#tab-subject").DataTable({
     language: {
         url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json",
     },
-    buttons: [{
-        text: "Thêm mới",
-        action: function(e, dt, node, config) {
-            window.location.href = "/subject/add";
-        },
-    }, ],
     columnDefs: [{
-        targets: 7,
-        orderable: false,
-    }, ],
+        "targets": 6,
+        "orderable": false
+    }]
 
 });
+
+$(".btn-edit").click(function(e) {
+
+    let subjectID = $(this).data("subjectid")
+    let subjectName = $(this).data("subjectname")
+    let credit = $(this).data("credit")
+    let final_score_weight = $(this).data("final_score_weight")
+    let exercise_weight = $(this).data("exercise_weight")
+    let lab_score_weight = $(this).data("lab_score_weight")
+
+    $("#editSubjectModal input[name = 'subjectID']").val(subjectID)
+    $("#editSubjectModal input[name = 'subjectName']").val(subjectName)
+    $("#editSubjectModal input[name = 'credit']").val(credit)
+    $("#editSubjectModal input[name = 'final_score_weight']").val(final_score_weight)
+    $("#editSubjectModal input[name = 'exercise_weight']").val(exercise_weight)
+    $("#editSubjectModal input[name = 'lab_score_weight']").val(lab_score_weight)
+
+    $("#editSubjectModal").modal("show");
+});
+
+$(".btn-delete").click(function(e) {
+    let subjectID = $(this).data("subjectid");
+    $("#deleteSubjectModal input[name = 'subjectID']").val(subjectID);
+    $("#deleteSubjectModal").modal("show");
+})

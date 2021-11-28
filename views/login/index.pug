@@ -17,11 +17,11 @@ html(lang='en')
 			// /.login-logo
 			.card.card-outline.card-primary
 				.card-header.text-center
-					a.h1(href='../../index2.html')
+					a.h2(href='../../index2.html')
 						| Xác thực tập trung
 				.card-body
 					p.login-box-msg Đăng nhập vào hệ thống
-					form(action='' method='post')
+					form(action='/login' method='post' id = "login")
 						.input-group.mb-3
 							input.form-control(type='email' name ='email' placeholder='Email')
 							.input-group-append
@@ -41,16 +41,17 @@ html(lang='en')
 							// /.col
 							.col-6
 								button.btn.btn-primary.btn-block.btn-md(type='submit') Đăng nhập
-					p.mb-1(style = 'margin-top: 2px')
-						a(href='forgot-password.html') Quên mật khẩu ?
-					p.mb-0
-						a.text-center(href='register.html') Chưa có tài khoản ?
-				// /.card-body
-			// /.card
-		// /.login-box
+					.row 
+						.col-6
+							p(style = 'margin-top: 10px')
+								a(href='forgot-password.html') Quên mật khẩu ?
+						.col-6
+							p(style = 'margin-top: 10px')
+								a.text-center(href='register.html') Chưa có tài khoản ?
 		// jQuery
 		script(src='../../plugins/jquery/jquery.min.js')
 		// Bootstrap 4
 		script(src='../../plugins/bootstrap/js/bootstrap.bundle.min.js')
 		// AdminLTE App
 		script(src='../../dist/js/adminlte.min.js')
+		script(src='../../javascripts/login.js')

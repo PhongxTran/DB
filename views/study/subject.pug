@@ -32,12 +32,82 @@ block content
 											td=subject.exercise_weight
 											td=subject.lab_score_weight
 											td.text-center
-												//- .btn.btn-primary.btn-xs
-												a(style="margin-right: 5px; ", href="/faculty/edit/" + subject.subjectID) 
-													i.fas.fa-edit
-												//.btn.btn-danger.btn-xs
-												a(href="/faculty/delete/" + subject.subjectID)
+												button.btn-edit(style="margin-right: 5px; border:none", 
+												data-subjectid = subject.subjectID,
+												data-subjectname = subject.subjectName, 
+												data-credit = subject.credit, 
+												data-final_score_weight = subject.final_score_weight, 
+												data-exercise_weight = subject.exercise_weight, 
+												data-lab_score_weight = subject.lab_score_weight)
+													i.fas.fa-edit(style="color:blue")
+												button.btn-delete(style="margin-right: 5px; border:none", data-subjectid = subject.subjectID)
 													i(style ='color: red').fas.fa-trash 
+
+							#addFacultyModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='addFacultyModal' aria-hidden='true')
+								.modal-dialog(role='document')
+									.modal-content
+										.modal-header
+											h5.modal-title Thêm mới
+											button.close(type='button' data-dismiss='modal' aria-label='Close')
+												span(aria-hidden='true') &times;
+										form(action="/faculty/add", method="post")
+											.modal-body
+												.form-group
+													label Tên khoa
+													input.form-control(type='text' placeholder='Tên khoa' name='name')
+												.form-group
+													label Năm thành lập
+													input.form-control(type='text' placeholder='Năm thành lập' name='establishedYear')
+											.modal-footer
+												button.btn.btn-secondary(type='button' data-dismiss='modal') Đóng lại
+												button.btn.btn-primary(type='submit') Thêm mới
+							
+							#editSubjectModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='editSubjectModal' aria-hidden='true')
+										.modal-dialog(role='document')
+											.modal-content
+												.modal-header
+													h5.modal-title Chỉnh sửa môn học
+													button.close(type='button' data-dismiss='modal' aria-label='Close')
+														span(aria-hidden='true') &times;
+												form(action="/study/subject/edit", method="post")
+													.modal-body
+														.form-group
+															input(type="hidden", name="subjectID")
+														.form-group
+															label Tên môn học
+															input.form-control(type='text', placeholder='Tên môn', name='subjectName')
+														.form-group
+															label Số tín chỉ
+															input.form-control(type='number', placeholder='Tín chỉ', name='credit')
+														.form-group
+															label HS thi
+															input.form-control(type='number', placeholder='HS thi', name='final_score_weight')
+														.form-group
+															label HS BTL
+															input.form-control(type='number', placeholder='HS BTL', name='exercise_weight')
+														.form-group
+															label HS lab
+															input.form-control(type='number', placeholder='HS lab', name='lab_score_weight')
+													.modal-footer
+														button.btn.btn-secondary(type='button' data-dismiss='modal') Đóng lại
+														button.btn.btn-primary(type='submit') Cập nhật
+
+							#deleteSubjectModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='deleteFacultyModal' aria-hidden='true')
+								.modal-dialog(role='document')
+									.modal-content.bg-danger
+										.modal-header
+											h5.modal-title Xóa
+											button.close(type='button' data-dismiss='modal' aria-label='Close')
+												span(aria-hidden='true') &times;
+										form(action="/subject/delete", method="post")
+											.modal-body
+												input(type="hidden", name="subjectID")
+												p Bạn có chắc chắn muốn xóa môn này không ?
+											.modal-footer
+												button.btn.btn-outline-light(type='button' data-dismiss='modal') Đóng lại
+												button.btn.btn-outline-light(type='submit') Xác nhận
+
+
 
 block script 
 	script(src="/javascripts/study/subject.js") 
