@@ -22,10 +22,12 @@ class subjectController {
         let semester = Number(params.semester);
 
         let subjectList = await groupclassModel.getAllGroupClassDetail(year, semester);
+        let teacherList = await groupclassModel.getAllteacher();
 
         res.render("study/groupclass_detail", {
             title: `${year} - ${semester}`,
-            subjectList: subjectList
+            subjectList: subjectList,
+            teacherList: teacherList
         })
 
     }
@@ -37,8 +39,8 @@ class subjectController {
     }
 
     async deleteSubject(req, res) {
-        let subjectID = req.body;
-        await subjectModel.deletesubject(subjectID);
+        let subjectID = req.body.subjectID;
+        await subjectModel.deleteSubject(subjectID);
         res.redirect('/study/subject');
     }
 

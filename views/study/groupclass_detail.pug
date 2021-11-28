@@ -12,6 +12,9 @@ block content
 				.col-12
 					.card
 						.card-body
+							button.btn.btn-primary.btn-add(data-toggle="modal" data-target="#addGroupclassModal", type="button") 
+								i.fas.fa-plus(style = "margin-right: 5px")
+								| Thêm mới
 							table#tab-groupclass.table.table-bordered.table-striped
 								thead
 									tr
@@ -30,14 +33,104 @@ block content
 											td=subject.subjectName
 											td=subject.startTime
 											td=subject.endTime
-											td=subject.MSGV
+											td=subject.fullName
 											td.text-center
-												//- .btn.btn-primary.btn-xs
 												a(style="margin-right: 5px; ", href="/faculty/edit/" + subject.subjectID) 
 													i.fas.fa-edit
-												//.btn.btn-danger.btn-xs
 												a(href="/faculty/delete/" + subject.subjectID)
 													i(style ='color: red').fas.fa-trash 
 
+							#addGroupclassModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='addFacultyModal' aria-hidden='true')
+								.modal-dialog(role='document')
+									.modal-content
+										.modal-header
+											h5.modal-title Thêm mới
+											button.close(type='button' data-dismiss='modal' aria-label='Close')
+												span(aria-hidden='true') &times;
+										form#form-add-subject(action="/study/subject/add", method="post")
+											.modal-body
+												.row
+													.col-6
+														.form-group
+															label Tên tổ
+															input.form-control(type='text' placeholder='Tên tổ' name='classID')
+													.col-6
+														.form-group
+															label Tên nhóm
+															input.form-control(type='text' placeholder='Tên nhóm' name='groupID')
+												.row 
+													.col-12
+														.form-group
+															label Tên môn
+															input.form-control(type='text' placeholder='Tên môn' name='subjectID')
+												.row 
+													.col-6
+														.form-group
+															label Giờ bắt đầu
+															input.form-control(type='time' placeholder='Giớ bắt đầu' name='startTime')
+													.col-6
+														.form-group
+															label Giờ kết thúc
+															input.form-control(type='time' placeholder='Giờ kết thúc' name='endTime')
+												.row 
+													.col-12
+														.form-group
+															label Giảng viên
+															select#sel-teacher.form-control.select2(name="MSGV", style="width: 100%;")
+																each teacher in teacherList 
+																	option(value=teacher.MSGV)=teacher.fullName + '-' + teacher.MSGV
+											.modal-footer
+												button.btn.btn-secondary(type='button' data-dismiss='modal') Đóng lại
+												button.btn.btn-primary(type='submit') Thêm mới
+							
+							#editGroupclassModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='editSubjectModal' aria-hidden='true')
+										.modal-dialog(role='document')
+											.modal-content
+												.modal-header
+													h5.modal-title Chỉnh sửa môn học
+													button.close(type='button' data-dismiss='modal' aria-label='Close')
+														span(aria-hidden='true') &times;
+												form(action="/study/subject/edit", method="post")
+													.modal-body
+														.form-group
+															input(type="hidden", name="subjectID")
+														.form-group
+															label Tên môn học
+															input.form-control(type='text', placeholder='Tên môn', name='subjectName')
+														.form-group
+															label Số tín chỉ
+															input.form-control(type='number', placeholder='Tín chỉ', name='credit')
+														.form-group
+															label HS thi
+															input.form-control(type='number', placeholder='HS thi', name='final_score_weight')
+														.form-group
+															label HS BTL
+															input.form-control(type='number', placeholder='HS BTL', name='exercise_weight')
+														.form-group
+															label HS lab
+															input.form-control(type='number', placeholder='HS lab', name='lab_score_weight')
+													.modal-footer
+														button.btn.btn-secondary(type='button' data-dismiss='modal') Đóng lại
+														button.btn.btn-primary(type='submit') Cập nhật
+
+							#deleteGroupclassModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='deleteFacultyModal' aria-hidden='true')
+								.modal-dialog(role='document')
+									.modal-content.bg-danger
+										.modal-header
+											h5.modal-title Xóa
+											button.close(type='button' data-dismiss='modal' aria-label='Close')
+												span(aria-hidden='true') &times;
+										form(action="/study/subject/delete", method="post")
+											.modal-body
+												input(type="hidden", name="subjectID")
+												p Bạn có chắc chắn muốn xóa môn này không ?
+											.modal-footer
+												button.btn.btn-outline-light(type='button' data-dismiss='modal') Đóng lại
+												button.btn.btn-outline-light(type='submit') Xác nhận
+block style 
+	link(rel="stylesheet", href="/plugins/select2/css/select2.min.css")
+	link(rel="stylesheet", href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")
+
 block script 
-	script(src="/javascripts/study/subject.js") 
+	script(src="/plugins/select2/js/select2.full.min.js")
+	script(src="/javascripts/study/groupclass.js") 
